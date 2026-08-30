@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# TODO: 公開ドメイン決定後にURLを変更
+Sitemap: https://2p94nzg5g9-pixel.github.io/sitemap.xml
