@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">レシまも 仮アプリアイコン</title>
+  <desc id="desc">深い緑色の背景に白いレシートを表した仮アイコン</desc>
+  <rect width="512" height="512" rx="112" fill="#1f5545"/>
+  <path d="M154 108h204v302l-34-22-34 22-34-22-34 22-34-22-34 22V108Z" fill="#f7f7f2"/>
+  <path d="M205 188h102M205 238h102M205 288h62" fill="none" stroke="#1f5545" stroke-width="22" stroke-linecap="round"/>
+  <circle cx="315" cy="326" r="34" fill="#ee7358"/>
+</svg>
