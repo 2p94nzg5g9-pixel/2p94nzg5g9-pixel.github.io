@@ -188,8 +188,8 @@ p { margin-top: 0; }
 /* Subpages */
 .page-hero { padding: 92px 0 72px; }
 .page-hero-inner { max-width: 780px; }
-.page-hero h1 { margin-bottom: 24px; font-size: clamp(2.8rem, 6vw, 5.6rem); }
-.page-hero p:not(.eyebrow) { max-width: 680px; color: var(--text-secondary); font-size: clamp(1.05rem, 1.8vw, 1.25rem); }
+.page-hero h1 { margin-bottom: 24px; color: var(--text-primary); font-size: clamp(2.8rem, 6vw, 5.6rem); font-weight: 800; letter-spacing: -.025em; }
+.page-hero p:not(.eyebrow) { max-width: 680px; color: color-mix(in srgb, var(--text-primary) 82%, var(--background)); font-size: clamp(1.05rem, 1.8vw, 1.25rem); font-weight: 500; }
 .breadcrumbs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 34px; color: var(--text-secondary); font-size: .78rem; }
 .breadcrumbs a { text-decoration: none; }
 .breadcrumbs a:hover { color: var(--text-primary); }
@@ -201,6 +201,8 @@ p { margin-top: 0; }
 .prose ul { padding-left: 1.25em; }
 .prose li + li { margin-top: 6px; }
 .prose a { color: var(--accent); }
+.prose a.button-primary { color: var(--background); }
+.prose a.button-primary:hover { color: var(--text-inverse); }
 .notice { margin: 30px 0; padding: 20px 22px; border: 1px solid var(--border); border-left: 4px solid var(--accent-warm); border-radius: var(--radius-sm); background: var(--surface); }
 .notice strong { display: block; margin-bottom: 4px; color: var(--text-primary); }
 .notice p { margin-bottom: 0; }
@@ -254,10 +256,12 @@ p { margin-top: 0; }
 
 .contact-options { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin: 42px 0; }
 .contact-option { padding: 25px; border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--surface); }
-.contact-option strong { display: block; margin-bottom: 4px; }
-.contact-option span { color: var(--text-secondary); font-size: .88rem; }
-.email-card { padding: clamp(30px, 6vw, 60px); border-radius: var(--radius-lg); background: var(--accent-soft); text-align: center; }
-.email-address { display: block; margin: 20px 0 26px; color: var(--text-primary); font-size: clamp(1.25rem, 3vw, 2.1rem); font-weight: 650; text-decoration: none; }
+.contact-option strong { display: block; margin-bottom: 4px; font-weight: 750; }
+.contact-option span { color: color-mix(in srgb, var(--text-primary) 78%, var(--surface)); font-size: .95rem; font-weight: 500; }
+.email-card { padding: clamp(30px, 6vw, 60px); border: 1px solid color-mix(in srgb, var(--accent) 30%, var(--border)); border-radius: var(--radius-lg); background: var(--accent-soft); text-align: center; }
+.email-card h2 { font-size: clamp(1.75rem, 4vw, 3.2rem); font-weight: 800; letter-spacing: -.025em; text-wrap: balance; }
+.email-card > p:not(.eyebrow) { color: var(--text-primary); font-weight: 500; }
+.email-address { display: block; margin: 20px 0 26px; color: var(--text-primary); font-size: clamp(1.25rem, 3vw, 2.1rem); font-weight: 750; text-decoration: underline; text-decoration-color: color-mix(in srgb, var(--accent) 55%, transparent); text-decoration-thickness: 2px; }
 .error-page { display: grid; min-height: calc(100svh - var(--header-height)); place-items: center; padding: 70px 0; text-align: center; }
 .error-code { margin: 0; color: var(--accent); font-size: clamp(5rem, 18vw, 12rem); font-weight: 700; letter-spacing: -.08em; line-height: .9; }
 .error-page h1 { margin: 26px 0 16px; font-size: clamp(2rem, 4vw, 3.2rem); }
