@@ -1,34 +1,26 @@
 (() => {
   "use strict";
-
   const config = window.SITE_CONFIG || {};
   const root = document.documentElement;
-  const storedTheme = localStorage.getItem("site-theme");
+  let storedTheme;
+  try { storedTheme = localStorage.getItem("site-theme"); } catch (_) { /* Storage can be unavailable in private or restricted contexts. */ }
   if (storedTheme === "light" || storedTheme === "dark") root.dataset.theme = storedTheme;
-
-  document.querySelectorAll("[data-site-name]").forEach((node) => { node.textContent = config.siteName || "TAKUMI apps"; });
-  document.querySelectorAll("[data-developer-name]").forEach((node) => { node.textContent = config.developerName || "TAKUMI apps"; });
-  document.querySelectorAll("[data-current-year]").forEach((node) => { node.textContent = new Date().getFullYear(); });
-  document.querySelectorAll("[data-contact-email]").forEach((node) => { node.textContent = config.contactEmail || "madaoganbaru@gmail.com"; });
-  document.querySelectorAll("[data-email-link]").forEach((node) => {
+  document.querySelectorAll("[data-developer-name]").forEach(node => { node.textContent = config.developerName || "TAKUMI apps"; });
+  document.querySelectorAll("[data-current-year]").forEach(node => { node.textContent = new Date().getFullYear(); });
+  document.querySelectorAll("[data-contact-email]").forEach(node => { node.textContent = config.contactEmail || "madaoganbaru@gmail.com"; });
+  document.querySelectorAll("[data-email-link]").forEach(node => {
     const subject = node.dataset.emailSubject ? `?subject=${encodeURIComponent(node.dataset.emailSubject)}` : "";
     node.href = `mailto:${config.contactEmail || "madaoganbaru@gmail.com"}${subject}`;
   });
-
-  document.querySelectorAll("[data-app-store-url]").forEach((link) => {
-    const appId = link.dataset.appId || "reshimamo";
-    const url = config.appStoreUrls?.[appId];
-    if (url) {
+  document.querySelectorAll("[data-app-store-url]").forEach(link => {
+    const url = config.appStoreUrls?.[link.dataset.appId];
+    if (url && /^https:\/\/apps\.apple\.com\//.test(url)) {
       link.href = url;
       link.target = "_blank";
       link.rel = "noopener noreferrer";
-      link.removeAttribute("aria-disabled");
-      link.classList.remove("is-placeholder");
-    } else {
-      link.addEventListener("click", (event) => event.preventDefault());
     }
+    // A valid static href continues to work when JavaScript or configuration is unavailable.
   });
-
   const menuButton = document.querySelector("[data-menu-toggle]");
   const nav = document.querySelector("[data-nav]");
   if (menuButton && nav) {
@@ -43,14 +35,14 @@
       menuButton.setAttribute("aria-label", isOpen ? "メニューを開く" : "メニューを閉じる");
       nav.classList.toggle("is-open", !isOpen);
     });
-    nav.querySelectorAll("a").forEach((link) => link.addEventListener("click", closeMenu));
+    nav.querySelectorAll("a").forEach(link => link.addEventListener("click", closeMenu));
+    document.addEventListener("keydown", event => { if (event.key === "Escape" && menuButton.getAttribute("aria-expanded") === "true") { closeMenu(); menuButton.focus(); } });
     window.addEventListener("resize", () => { if (window.innerWidth > 820) closeMenu(); });
   }
-
   document.querySelector("[data-theme-toggle]")?.addEventListener("click", () => {
-    const isDark = root.dataset.theme === "dark" || (!root.dataset.theme && window.matchMedia("(prefers-color-scheme: dark)").matches);
-    const nextTheme = isDark ? "light" : "dark";
-    root.dataset.theme = nextTheme;
-    localStorage.setItem("site-theme", nextTheme);
+    const isDark = root.dataset.theme === "dark" || (!root.dataset.theme && matchMedia("(prefers-color-scheme: dark)").matches);
+    const theme = isDark ? "light" : "dark";
+    root.dataset.theme = theme;
+    try { localStorage.setItem("site-theme", theme); } catch (_) { /* Switching still works for the current page. */ }
   });
 })();
