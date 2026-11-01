@@ -37,7 +37,18 @@
     resets.forEach(button => { if (form.contains(button)) button.hidden = !query; });
     status.textContent = !query ? 'キーワードで、このページの説明を探せます。' : matches ? `${matches}つのカテゴリに見つかりました。該当する説明を表示しています。` : '一致する項目がありません。別のキーワードでお試しください。';
   };
-  const clear = (focus = false) => { input.value = ''; apply(); if (focus) input.focus(); };
+  const clear = (focus = false) => {
+    input.value = '';
+    apply();
+    try {
+      const url = new URL(location.href);
+      if (url.searchParams.has('q')) {
+        url.searchParams.delete('q');
+        history.replaceState(null, '', url.pathname + url.search + url.hash);
+      }
+    } catch (_) { /* The page still works when history cannot be changed. */ }
+    if (focus) input.focus();
+  };
   form.addEventListener('submit', event => { event.preventDefault(); apply(); });
   input.addEventListener('input', event => { if (!event.isComposing) apply(); });
   input.addEventListener('compositionend', apply);
@@ -53,5 +64,8 @@
     const target = document.getElementById(location.hash.slice(1));
     if (target && target.hidden && input.value) { clear(); target.scrollIntoView(); }
   });
+  const initialQuery = new URLSearchParams(location.search).get('q');
+  if (initialQuery) input.value = initialQuery;
   form.hidden = false;
+  apply();
 })();

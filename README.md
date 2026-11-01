@@ -46,4 +46,4 @@ python3 -m http.server 8765 --bind 127.0.0.1
 
 `apps/<アプリ識別名>/index.html` を紹介ページにし、同じフォルダにサポート・プライバシーを配置します。トップの `.app-directory` にカードを追加し、詳細URLへリンクしてください。詳細ページにはApp Store、使い方・FAQ、アプリ名を件名に入れた問い合わせ先をまとめます。サポート一覧とサイトマップも更新してください。
 
-サポートの情報配置は [Notionヘルプ](https://www.notion.com/ja/help) のカテゴリと目次、[Appleの問い合わせ案内](https://support.apple.com/ja-jp/contact) の製品から目的へ進む構造を参考にしています。本文と実画面・ブランドは本サイトのものです。
+デザインはユーザー指定の [CAMINOVA MARKETINGのサポートサイト紹介](https://www.caminova-m.co.jp/manufacturing_business/support-site.htm) を参考にしています。白地・中央ロゴと横ナビ・オレンジの見出しとボタン・水色バナー・濃灰フッターを共通化し、掲載されているサポート例の「キーワード・目的・製品」の探し方を、アプリ向けに取り入れています。本文・実画面・ブランドは本サイトのものです。外部のフォント・画像・スクリプトへの依存は追加していません。
