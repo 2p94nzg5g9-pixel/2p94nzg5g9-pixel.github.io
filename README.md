@@ -4,7 +4,8 @@
 
 ## 主なページ
 
-- `/`：公開アプリ「黒ナンバー記録簿」の紹介とApp Storeへのリンク
+- `/`：公開中のアプリ一覧。各アプリの詳細ページへ移動
+- `/apps/kuronumberlog/`：黒ナンバー記録簿の機能紹介・無料とPro・サポート・問い合わせ先
 - `/support/`：サポート一覧
 - `/apps/kuronumberlog/support.html`：基本操作・FAQ・バックアップ・問い合わせ
 - `/apps/kuronumberlog/privacy.html`：黒ナンバー記録簿のプライバシーポリシー
@@ -15,6 +16,8 @@
 ## 共通ファイル
 
 - `assets/css/style.css`：共通デザイン・レスポンシブ・ライト/ダークテーマ
+- `assets/css/support.css`：サポートのカテゴリ・目次・読みやすい本文
+- `assets/js/support.js`：サポート本文内のキーワード検索（ブラウザ内のみ）
 - `assets/js/main.js`：モバイルメニュー、テーマ切替、メール・ストアリンク
 - `assets/js/config.js`：運営名・問い合わせ先・App Store URLの設定
 - `assets/images/apps/kuronumberlog/`：正式なアプリアイコン、ストア制作に使った実画面のサンプル
@@ -38,3 +41,9 @@ python3 -m http.server 8765 --bind 127.0.0.1
 公開URL：<https://2p94nzg5g9-pixel.github.io/>
 
 `main`への反映で既存のGitHub Pagesから配信されます。App Store Connectの設定やアプリの公開操作は、このリポジトリの変更では行われません。
+
+## アプリを追加するとき
+
+`apps/<アプリ識別名>/index.html` を紹介ページにし、同じフォルダにサポート・プライバシーを配置します。トップの `.app-directory` にカードを追加し、詳細URLへリンクしてください。詳細ページにはApp Store、使い方・FAQ、アプリ名を件名に入れた問い合わせ先をまとめます。サポート一覧とサイトマップも更新してください。
+
+サポートの情報配置は [Notionヘルプ](https://www.notion.com/ja/help) のカテゴリと目次、[Appleの問い合わせ案内](https://support.apple.com/ja-jp/contact) の製品から目的へ進む構造を参考にしています。本文と実画面・ブランドは本サイトのものです。
